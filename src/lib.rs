@@ -21,9 +21,9 @@ pub(crate) enum Fragment<T: Clone + PartialEq + Eq> {
 	End,
 }
 
-/// hi
+/// A pattern struct used to match against other patterns. This is NOT used to generate permutations.
 #[derive(Clone, PartialEq, Eq, Debug)]
-pub struct Matcher<T>(Box<Fragment<T>>);
+pub struct Matcher<T: Clone + PartialEq + Eq>(Box<Fragment<T>>);
 
 impl<T: Clone + PartialEq + Eq> Default for Matcher<T> {
 	fn default() -> Self {
@@ -35,7 +35,7 @@ impl<T: Clone + PartialEq + Eq> Default for Matcher<T> {
 
 /// The main difference between `Pattern` and `Matcher` is the lack of the `Any` and `Quantifier` fragments. `Pattern`s can always be promoted to `Matcher`s, but not vice-versa.
 #[derive(Clone, PartialEq, Eq, Debug)]
-pub struct Pattern<T>(Box<Fragment<T>>);
+pub struct Pattern<T: Clone + PartialEq + Eq>(Box<Fragment<T>>);
 
 impl<T: Clone + PartialEq + Eq> Default for Pattern<T> {
 	fn default() -> Self {
@@ -44,5 +44,3 @@ impl<T: Clone + PartialEq + Eq> Default for Pattern<T> {
 		}
 	}
 }
-
-fn main() {}
