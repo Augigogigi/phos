@@ -1,6 +1,6 @@
 [package]
 name = "phos"
-version = "0.0.1"
+version = "0.0.2"
 edition = "2021"
 authors = ["Thomas Reddy <contact@thomasreddy.com>"]
 description = "A rust crate for a regex-like pattern matcher/permutation generator."
