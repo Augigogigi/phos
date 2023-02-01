@@ -6,13 +6,18 @@
 use std::fmt::Formatter;
 use std::ops::Range;
 
+#[derive(Clone, Copy, PartialEq, Eq, Debug)]
+pub(crate) enum QuantifierMode {
+	Lazy,
+	Greedy,
+}
+
 /// CRATE INTERNALS | An enum with some variants not meant to be accessible by the user. The `pattern!` macro will generate these for you.
 #[derive(Clone, PartialEq, Eq, Debug)]
 pub(crate) enum Fragment<T: Clone + PartialEq + Eq> {
 	None,
 	Any,
-	// TODO: better thing than Vec<MFrag<T>>? box?
-	Quantifier(Vec<Fragment<T>>, Range<usize>, bool),
+	Quantifier(Box<Fragment<T>>, Range<usize>, QuantifierMode),
 	// lazy expands the quantity until match, greedy starts at pat.len() and shrinks until match
 	// TODO: improve
 	Except(Vec<Fragment<T>>, Vec<Fragment<T>>),
@@ -60,6 +65,7 @@ impl<T: Clone + PartialEq + Eq> Default for Pattern<T> {
 	}
 }
 
+/// Tests
 #[cfg(test)]
 mod tests {
 	use crate::{Matcher, Pattern};

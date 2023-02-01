@@ -1,12 +1,12 @@
 [package]
 name = "phos"
-version = "0.0.2"
+version = "0.0.4"
 edition = "2021"
 authors = ["Thomas Reddy <contact@thomasreddy.com>"]
 description = "A rust crate for a regex-like pattern matcher/permutation generator."
 keywords = ["pattern", "match", "regex", "permutation", "combination"]
 repository = "https://github.com/Augigogigi/phos"
-license = "GPL-3.0-only"
+license = "MIT OR Apache-2.0"
 readme = "README.md"
 
 [dependencies]
