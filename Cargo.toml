@@ -3,10 +3,13 @@ name = "phos"
 version = "0.0.4"
 edition = "2021"
 authors = ["Thomas Reddy <contact@thomasreddy.com>"]
-description = "A rust crate for a regex-like pattern matcher/permutation generator."
+description = "A rust crate for a structure pattern matcher/permutation generator. (This *can* be used to match on strings, but I would recommend an actual regex crate for that.)"
 keywords = ["pattern", "match", "regex", "permutation", "combination"]
 repository = "https://github.com/Augigogigi/phos"
 license = "MIT OR Apache-2.0"
 readme = "README.md"
+
+[profile.release]
+panic = "abort"
 
 [dependencies]
